@@ -1,0 +1,168 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "description": "As informações desse documento são referentes ao endpoint de cadastro de candidatos do processo seletivo.",
+    "version": "1.0.0",
+    "title": "API de gestão de processo seletivo"
+  },
+  "servers": [
+    {
+      "url": "https://api.bradesco.com"
+    }
+  ],
+  "tags": [
+  ],
+  "paths": {
+    "/{brand}/candidates": {
+      "post": {
+        "tags": [
+          "Cadastro de candidatos"
+        ],
+        "summary": "Possibilita o cadastro de candidatos no processo seletivo",
+        "operationId": "findAll",
+        "parameters": [
+          {
+            "name": "brand",
+            "in": "path",
+            "description": "brand (marca)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Bradesco"
+              ]
+            }
+          }
+        ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "required": [
+                                        "name",
+                                        "date_of_birth",
+                                        "years_of_experience",
+                                        "soft_skills"
+                                    ],
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "description": "Nome completo do candidato.",
+                                            "example": "Gustavo dos Santos Figueredo"
+                                        },
+                                        "date_of_birth": {
+                                            "type": "string",
+                                            "description": "Data de nascimento do candidato.",
+                                            "example": "1989-11-20"
+                                        },
+                                        "academic_background": {
+                                            "type": "string",
+                                            "description": "Formação acadêmica do candidato.",
+                                            "example": "Bibliotecário"
+                                        },
+                                        "years_of_experience": {
+                                            "type": "integer",
+                                            "description": "Tempo de experiência do candidato na função determinada.",
+                                            "example": 3
+                                        },
+                                        "soft_skills": {
+                                            "type": "string",
+                                            "description": "Habilidades comportamentais do candidato.",
+                                            "example": "Resiliência"
+                                        },
+                                        "hard_skills": {
+                                            "type": "string",
+                                            "description": "Habilidades técnicas adquiridas pelo candidato via capacitação, curso e/ou treinamento.",
+                                            "example": "SEO"
+                                        }
+                                    }
+                                }
+                            },
+                            "example": [
+                                {
+                                    "name": "Gustavo dos Santos Figueredo",
+                                    "date_of_birth": "1989-11-20",
+                                    "academic_background": "Bibliotecário",
+                                    "years_of_experience": 3,
+                                    "sof_skills": "Resiliência",
+                                    "hard_skills": "SEO"
+                                    }
+                            ]
+                        }
+                    }
+                },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "ID": 123456789,
+                  "name": "Gustavo dos Santos Figueredo",
+                  "date_of_birth": "1989-11-20",
+                  "academic_background": "Bibliotecário",
+                  "years_of_experience": 3,
+                  "soft_skills": "Resiliência",
+                  "hard_skills": "SEO"
+                },                              
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                      "ID": {
+                          "type": "number",
+                          "description": "ID do candidato.",
+                          "example": "123456789"
+                      },
+                      "name": {
+                          "type": "string",
+                          "description": "Nome completo do candidato.",
+                          "example": "Gustavo dos Santos Figueredo"
+                      },
+                      "date_of_birth": {
+                          "type": "string",
+                          "description": "Data de nascimento do candidato.",
+                          "example": "1989-11-20"
+                      },
+                      "academic_background": {
+                          "type": "string",
+                          "description": "Formação acadêmica do candidato.",
+                          "example": "Bibliotecário"
+                      },
+                      "years_of_experience": {
+                          "type": "integer",
+                          "description": "Tempo de experiência do candidato na função determinada.",
+                          "example": 3
+                      },
+                      "soft_skills": {
+                          "type": "string",
+                          "description": "Habilidades comportamentais do candidato.",
+                          "example": "Resiliência"
+                      },
+                      "hard_skills": {
+                          "type": "string",
+                          "description": "Habilidades técnicas adquiridas pelo candidato via capacitação, curso e/ou treinamento.",
+                          "example": "SEO"
+                      }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden Error"
+          },
+          "422": {
+            "description": "Business Error"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "description": "Gateway Error"
+          }
+}}}}}

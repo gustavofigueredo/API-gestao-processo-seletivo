@@ -1,0 +1,80 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "description": "As informações desse documento são referentes ao endpoint de cancelamento da entrevista com o candidato do processo seletivo.",
+    "version": "1.0.0",
+    "title": "API de gestão de processo seletivo"
+  },
+  "servers": [
+    {
+      "url": "https://api.bradesco.com"
+    }
+  ],
+  "tags": [
+  ],
+  "paths": {
+    "/{brand}/candidates/{id}/interviews/{interview_id}": {
+      "delete": {
+        "tags": [
+          "Cancelamento da entrevista"
+        ],
+        "summary": "Possibilita o cancelamento da entrevista do candidato no processo seletivo",
+        "operationId": "cancelAll",
+        "parameters": [
+          {
+            "name": "brand",
+            "in": "path",
+            "description": "brand (marca)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Bradesco"
+              ]
+            }
+          },
+                    {
+            "name": "id",
+            "in": "query",
+            "description": "ID do candidato",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                "123456789"
+              ]
+            }
+          },
+                              {
+            "name": "interview_id",
+            "in": "query",
+            "description": "ID da entrevista",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                "1"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden Error"
+          },
+          "422": {
+            "description": "Business Error"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "description": "Gateway Error"
+          }
+}}}}}
